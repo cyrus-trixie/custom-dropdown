@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Dropdown</title>
+    <style>
+  
+      #box {
+        display: flex;
+        justify-content: center;
+        font-family: Arial, Helvetica, sans-serif;
+        gap: 40px;
+      }
+      #Heroes {
+        width: 400px;
+        font-size: 14px; 
+        padding: 6px;
+      }
+      
+      #output {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      #selectedHeroes {
+        font-size: 14px;
+        padding: 10px;
+      }
+      #selectedHeroes li {
+        margin: 5px 0;
+      }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <select name="superheroes" id="Heroes">
+            <option value="" disabled selected>Select Your Favorite Superhero</option>
+            <option value="Batman">Batman</option>
+            <option value="Superman">Superman</option>
+            <option value="Wonder Woman">Wonder Woman</option>
+            <option value="Spider-Man">Spider-Man</option>
+            <option value="Iron Man">Iron Man</option>
+            <option value="Captain America">Captain America</option>
+            <option value="Hulk">Hulk</option>
+            <option value="Thor">Thor</option>
+            <option value="Black Widow">Black Widow</option>
+            <option value="Aquaman">Aquaman</option>
+            <option value="The Flash">The Flash</option>
+            <option value="Black Panther">Black Panther</option>
+        </select>
+      
+        <p id="output">Your Fav hero is: <span id="heroName" style="color: red;"></span></p>
+    </div>
+
+    <ul id="selectedHeroes">
+
+    </ul>
+
+    <script>
+        const Heroes = document.getElementById('Heroes'); 
+        const heroName = document.getElementById('heroName'); 
+        const selectedHeroes = document.getElementById('selectedHeroes'); 
+
+        Heroes.addEventListener('change', () => {
+            // Get the selected hero's name
+            const selectedHero = Heroes.value;
+
+            
+            heroName.textContent = selectedHero;
+
+            // Create a new list item and append it to the list
+            const listItem = document.createElement('li');
+            listItem.textContent = selectedHero;
+            selectedHeroes.appendChild(listItem);
+
+            // Reset the dropdown after 1 second
+            setTimeout(() => {
+                Heroes.selectedIndex = 0; 
+                heroName.textContent = ""; 
+            }, 1000);
+        });
+    </script>
+</body>
+</html>
